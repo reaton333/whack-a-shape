@@ -4,7 +4,7 @@
 
     <!--Add your page content here-->
     <ActionBar class="action-bar">
-        <Label class="action-bar-title" text="Whack a Shapeeeeeeeeeeeeeee"></Label>
+        <Label class="action-bar-title" text="Whack a Shape"></Label>
     </ActionBar>
 
     <GridLayout>
