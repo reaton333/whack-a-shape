@@ -15,8 +15,8 @@
     </GridLayout>
 
     <StackLayout orientation="vertical" >
-        <Button text="Marathon Whack" class="btn btn-active btn-primary home-page-btns"/>
-        <Button text="Timed Whack" class="btn btn-active btn-primary home-page-btns"/>
+        <Button text="Marathon Whack" class="btn btn-active btn-primary home-page-btns" tap="buttonTapMarathon"/>
+        <Button text="Timed Whack" class="btn btn-active btn-primary home-page-btns" tap="buttonTapTime"/>
     </StackLayout>
 
 </StackLayout>
