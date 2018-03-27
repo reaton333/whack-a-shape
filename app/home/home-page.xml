@@ -4,9 +4,23 @@
 
     <!--Add your page content here-->
     <ActionBar class="action-bar">
-        <Label class="action-bar-title" text="Whack a Shape"></Label>
+        <Label class="h1 home-page-header" text="Whack-A-Shape"></Label>
     </ActionBar>
 
-    <GridLayout>
+<StackLayout class="form home-page-form">
+
+    <GridLayout class="input-sides" rows="auto, auto" columns="*,*">
+        <Label text="Pick your Whack" class="home-page-label" row="0" col="0" colSpan="10"/>
+        <StackLayout class="hr-light" row="1" colSpan="10"></StackLayout>
     </GridLayout>
+
+    <StackLayout orientation="vertical" >
+        <Button text="Marathon Whack" class="btn btn-active btn-primary home-page-btns"/>
+        <Button text="Timed Whack" class="btn btn-active btn-primary home-page-btns"/>
+    </StackLayout>
+
+</StackLayout>
+
+
+
 </Page>
