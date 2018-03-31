@@ -19,7 +19,7 @@ function onNavigatingTo(args) {
     view the API reference of the Page to see what’s available at
     https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
     */
-    const page = args.object;
+    const page = args.object; 
 
     /*
     A page’s bindingContext is an object that should be used to perform
@@ -44,7 +44,8 @@ function buttonTapMarathon(args) {
     https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
     */
     const page = args.object;
-
+    var frames = require("ui/frame");
+    frames.topmost().navigate("marathon/marathon-page");
     /*
     A page’s bindingContext is an object that should be used to perform
     data binding between XML markup and JavaScript code. Properties
@@ -67,7 +68,8 @@ function buttonTapTime(args) {
     https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
     */
     const page = args.object;
-
+    var frames = require("ui/frame");
+    frames.topmost().navigate("timed/timed-page");
     /*
     A page’s bindingContext is an object that should be used to perform
     data binding between XML markup and JavaScript code. Properties
