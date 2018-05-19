@@ -1,9 +1,19 @@
 <Page navigatingTo="onNavigatingTo" class="page"
     xmlns="http://schemas.nativescript.org/tns.xsd" >
-    <ActionBar class="action-bar">
-        <Label class="action-bar-title" text="Timed"></Label>
+
+    <ActionBar title="Timed Whack">
+        <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="navigateToHome"></NavigationButton>
+        <ActionItem ios.systemIcon="18" android.systemIcon="ic_media_pause" 
+            ios.position="right" tap="pauseGame">
+        </ActionItem>
     </ActionBar>
 
-    <StackLayout>
-    </StackLayout>
+    <AbsoluteLayout width="100%" height="100%" backgroundColor="#3d3d3d" id="gameField" loaded="fieldLoaded">
+
+        <button id="whatToPick" class="whatToPickShape" width="50" height="50" backgroundColor="#3d3d3d"></button>
+        
+        <button id="circle" tap="circleClick" text="" left="0" top="0" width="100" height="100" backgroundColor="red" visibility="collapsed"/>
+        <button id="square" tap="squareClick" text="" left="300" top="500" width="100" height="100" backgroundColor="green" visibility="collapsed"/>
+        <button id="triangle" tap="triangleClick" text="" left="300" top="0" width="100" height="100" backgroundColor="yellow" visibility="collapsed"/>
+    </AbsoluteLayout>
 </Page>
