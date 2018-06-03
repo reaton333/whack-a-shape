@@ -39,6 +39,8 @@ var TOTAL_GAME_PLAY_TIME_SECONDS = 30;
 var interval;
 var gameScreen;
 var pick;
+var TOTAL_TIME_REMAINING = 30; //For now set to 30 secs!
+var GAME_OVER = false; // to be used later for stopping the game!
 // var scoreLabel;
 
 
@@ -108,7 +110,7 @@ function fieldLoaded(args) {
     triangle.visibility = "visible"; */
 
 
-   interval= setInterval(myMethod, 1000);
+   interval = setInterval(myMethod, 1000);
    
    
 //var pickRed = page.getViewById("circle");
@@ -153,6 +155,22 @@ function fieldLoaded(args) {
         scoreLabel.text = "Score: " + TOTAL_SCORE;
 
     }
+
+    // Set Timer!!!
+    a = setInterval(function(){ 
+        var timerLabel = page.getViewById("timeRemaining");
+        //console.log("Hi");
+        if (TOTAL_TIME_REMAINING > 0) {
+            TOTAL_TIME_REMAINING--;
+        }
+
+        if(TOTAL_TIME_REMAINING == 0){ 
+            clearInterval(a);
+            GAME_OVER = true;
+        } 
+            console.log(TOTAL_TIME_REMAINING);
+            timerLabel.text = "Timer: " + TOTAL_TIME_REMAINING;
+    }, 1000);
 }
 
 exports.pauseGame = pauseGame;
