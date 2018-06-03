@@ -39,39 +39,42 @@ var TOTAL_GAME_PLAY_TIME_SECONDS = 30;
 var interval;
 var gameScreen;
 var pick;
+var TOTAL_TIME_REMAINING = 30; //For now set to 30 secs!
+var GAME_OVER = false; // to be used later for stopping the game!
+// var scoreLabel;
 
 
 function circleClick(args) {
     const page = args.object;
-    //page.bindingContext = new TimedViewModel();
+    
     console.log("circle");
     
     if(pick == 1){
         console.log("POINT");
         TOTAL_SCORE++;
-        alert(TOTAL_SCORE);
+        // alert("Score: " + TOTAL_SCORE);
     }
 }
 
 function squareClick(args) {
     const page = args.object;
-    //page.bindingContext = new TimedViewModel();
+    
     console.log("square");
     if(pick == 2){
         console.log("POINT");
         TOTAL_SCORE++;
-        alert(TOTAL_SCORE);
+        // alert("Score: " + TOTAL_SCORE);
     }
 }
 
 function triangleClick(args) {
     const page = args.object;
-    //page.bindingContext = new TimedViewModel();
+
     console.log("triangle");
     if(pick == 3){
         console.log("POINT");
         TOTAL_SCORE++;
-        alert(TOTAL_SCORE);
+        // alert("Score: " + TOTAL_SCORE);
     }
 }
 
@@ -107,48 +110,67 @@ function fieldLoaded(args) {
     triangle.visibility = "visible"; */
 
 
-   interval= setInterval(myMethod, 1000);
+   interval = setInterval(myMethod, 1000);
    
    
 //var pickRed = page.getViewById("circle");
 //var pickGreen = page.getViewById("square"); 
 //var pickYellow = page.getViewById("triangle");
 
+    // Set all visuals here, like innerHtml stuff
+    function myMethod() {
+        pick = Math.floor(Math.random() * 3) + 1;
+        //console.log(pick);
+        //page.getViewById("whatToPick").text = pick;
+        if(pick == 1){
+            page.getViewById("whatToPick").backgroundColor = "red";
+        } else if(pick == 2){
+            page.getViewById("whatToPick").backgroundColor = "green";
+        } else if(pick == 3){
+            page.getViewById("whatToPick").backgroundColor = "yellow";
+        }
+        var circle = page.getViewById("circle");
+        var square = page.getViewById("square"); 
+        var triangle = page.getViewById("triangle");
+        var scoreLabel = page.getViewById("currentScore");
 
-function myMethod( )
-{
-    pick = Math.floor(Math.random() * 3) + 1;
-    //console.log(pick);
-    //page.getViewById("whatToPick").text = pick;
-    if(pick == 1){
-        page.getViewById("whatToPick").backgroundColor = "red";
-    } else if(pick == 2){
-        page.getViewById("whatToPick").backgroundColor = "green";
-    } else if(pick == 3){
-        page.getViewById("whatToPick").backgroundColor = "yellow";
+        //console.log(args.object.getMeasuredWidth());
+        //console.log(args.object.getMeasuredHeight());
+
+        // random x/y coordinate
+        circle.top = Math.floor(Math.random() * 500);
+        circle.left = Math.floor(Math.random() * 300);
+
+        square.top = Math.floor(Math.random() * 500);
+        square.left = Math.floor(Math.random() * 300);
+
+        triangle.top = Math.floor(Math.random() * 500);
+        triangle.left = Math.floor(Math.random() * 300);
+
+        circle.visibility = "visible";
+        square.visibility = "visible";
+        triangle.visibility = "visible";
+
+        // Set Score!!
+        scoreLabel.text = "Score: " + TOTAL_SCORE;
+
     }
-    var circle = page.getViewById("circle");
-    var square = page.getViewById("square"); 
-    var triangle = page.getViewById("triangle");
 
-    //console.log(args.object.getMeasuredWidth());
-    //console.log(args.object.getMeasuredHeight());
+    // Set Timer!!!
+    a = setInterval(function(){ 
+        var timerLabel = page.getViewById("timeRemaining");
+        //console.log("Hi");
+        if (TOTAL_TIME_REMAINING > 0) {
+            TOTAL_TIME_REMAINING--;
+        }
 
-    // random x/y coordinate
-    circle.top = Math.floor(Math.random() * 500);
-    circle.left = Math.floor(Math.random() * 300);
-
-    square.top = Math.floor(Math.random() * 500);
-    square.left = Math.floor(Math.random() * 300);
-
-    triangle.top = Math.floor(Math.random() * 500);
-    triangle.left = Math.floor(Math.random() * 300);
-
-    circle.visibility = "visible";
-    square.visibility = "visible";
-    triangle.visibility = "visible";
-
-}
+        if(TOTAL_TIME_REMAINING == 0){ 
+            clearInterval(a);
+            GAME_OVER = true;
+        } 
+            console.log(TOTAL_TIME_REMAINING);
+            timerLabel.text = "Timer: " + TOTAL_TIME_REMAINING;
+    }, 1000);
 }
 
 exports.pauseGame = pauseGame;
