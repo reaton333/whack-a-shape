@@ -1,4 +1,5 @@
 const TimedViewModel = require("./timed-view-model");
+var buttonModule = require("ui/button");
 
 
 /* ***********************************************************
@@ -44,73 +45,78 @@ var GAME_OVER = false; // to be used later for stopping the game!
 // var scoreLabel;
 
 
-function circleClick(args) {
-    const page = args.object;
-    
-    console.log("circle");
-    
-    if(pick == 1){
-        console.log("POINT");
-        TOTAL_SCORE++;
-        // alert("Score: " + TOTAL_SCORE);
-    }
-}
-
-function squareClick(args) {
-    const page = args.object;
-    
-    console.log("square");
-    if(pick == 2){
-        console.log("POINT");
-        TOTAL_SCORE++;
-        // alert("Score: " + TOTAL_SCORE);
-    }
-}
-
-function triangleClick(args) {
-    const page = args.object;
-
-    console.log("triangle");
-    if(pick == 3){
-        console.log("POINT");
-        TOTAL_SCORE++;
-        // alert("Score: " + TOTAL_SCORE);
-    }
-}
-
 function pauseGame(args) {
     const page = args.object;
 
     alert("Game has been paused!");
 }
 
+
 function fieldLoaded(args) {
     const page = args.object;
     //page.bindingContext = new TimedViewModel();
     console.log("loadedField");
     gameScreen = args;
-    /* var circle = page.getViewById("circle");
-    var square = page.getViewById("square"); 
-    var triangle = page.getViewById("triangle");
 
-    console.log(args.object.getMeasuredWidth());
-    console.log(args.object.getMeasuredHeight());
+    var circleBtn = page.getViewById("circleBtn");
+    var squareBtn = page.getViewById("squareBtn"); 
+    var triangleBtn = page.getViewById("triangleBtn");
+    var scoreLabel = page.getViewById("currentScore");
 
-    circle.top = Math.floor(Math.random() * 500);
-    circle.left = Math.floor(Math.random() * 300);
+    var circleTap = function circleClick(args) {
+        const page = args.object;
+        
+        console.log("circle");
+        
+        if(pick == 1){
+            console.log("POINT");
+            TOTAL_SCORE++;
+            //myMethod();
 
-    square.top = Math.floor(Math.random() * 500);
-    square.left = Math.floor(Math.random() * 300);
+            displayAllRandomShapes();
+            //alert("Score: " + TOTAL_SCORE);
+        }
+    }
+    
+    var squareTap = function squareClick(args) {
+        const page = args.object;
+        
+        console.log("square");
+        if(pick == 2){
+            console.log("POINT");
+            TOTAL_SCORE++;
+            //myMethod();
 
-    triangle.top = Math.floor(Math.random() * 500);
-    triangle.left = Math.floor(Math.random() * 300);
+            displayAllRandomShapes();
+            //alert("Score: " + TOTAL_SCORE);
+        }
+    }
+    
+    var triangleTap = function triangleClick(args) {
+        const page = args.object;
+    
+        console.log("triangle");
+        if(pick == 3){
+            console.log("POINT");
+            TOTAL_SCORE++;
+    
+            displayAllRandomShapes();
+            //reset random components
+            //myMethod();
+            //alert("Score: " + TOTAL_SCORE);
+        }
+    }
 
-    circle.visibility = "visible";
-    square.visibility = "visible";
-    triangle.visibility = "visible"; */
+    // Button listeners...basically listen on the page for the button
+    // tap. When the button is tapped it will call the methods below
+    circleBtn.addEventListener(buttonModule.Button.tapEvent, circleTap, this);
+    squareBtn.addEventListener(buttonModule.Button.tapEvent, squareTap, this);
+    triangleBtn.addEventListener(buttonModule.Button.tapEvent, triangleTap, this);
 
-
-   interval = setInterval(myMethod, 1000);
+    // Load all the shapes randomly at start!
+    displayAllRandomShapes();
+   //interval = setInterval(myMethod, 1000);
+   
    
    
 //var pickRed = page.getViewById("circle");
@@ -118,7 +124,7 @@ function fieldLoaded(args) {
 //var pickYellow = page.getViewById("triangle");
 
     // Set all visuals here, like innerHtml stuff
-    function myMethod() {
+    function displayAllRandomShapes() {
         pick = Math.floor(Math.random() * 3) + 1;
         //console.log(pick);
         //page.getViewById("whatToPick").text = pick;
@@ -129,27 +135,24 @@ function fieldLoaded(args) {
         } else if(pick == 3){
             page.getViewById("whatToPick").backgroundColor = "yellow";
         }
-        var circle = page.getViewById("circle");
-        var square = page.getViewById("square"); 
-        var triangle = page.getViewById("triangle");
-        var scoreLabel = page.getViewById("currentScore");
+
 
         //console.log(args.object.getMeasuredWidth());
         //console.log(args.object.getMeasuredHeight());
 
         // random x/y coordinate
-        circle.top = Math.floor(Math.random() * 500);
-        circle.left = Math.floor(Math.random() * 300);
+        circleBtn.top = Math.floor(Math.random() * 500);
+        circleBtn.left = Math.floor(Math.random() * 300);
 
-        square.top = Math.floor(Math.random() * 500);
-        square.left = Math.floor(Math.random() * 300);
+        squareBtn.top = Math.floor(Math.random() * 500);
+        squareBtn.left = Math.floor(Math.random() * 300);
 
-        triangle.top = Math.floor(Math.random() * 500);
-        triangle.left = Math.floor(Math.random() * 300);
+        triangleBtn.top = Math.floor(Math.random() * 500);
+        triangleBtn.left = Math.floor(Math.random() * 300);
 
-        circle.visibility = "visible";
-        square.visibility = "visible";
-        triangle.visibility = "visible";
+        circleBtn.visibility = "visible";
+        squareBtn.visibility = "visible";
+        triangleBtn.visibility = "visible";
 
         // Set Score!!
         scoreLabel.text = "Score: " + TOTAL_SCORE;
@@ -176,7 +179,7 @@ function fieldLoaded(args) {
 exports.pauseGame = pauseGame;
 exports.onNavigatingTo = onNavigatingTo;
 exports.navigateToHome = navigateToHome;
-exports.circleClick = circleClick;
-exports.squareClick = squareClick;
-exports.triangleClick = triangleClick;
+//exports.circleClick = circleClick;
+//exports.squareClick = squareClick;
+//exports.triangleClick = triangleClick;
 exports.fieldLoaded = fieldLoaded;
