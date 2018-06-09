@@ -71,8 +71,8 @@ function fieldLoaded(args) {
         if(pick == 1){
             console.log("POINT");
             TOTAL_SCORE++;
-            //myMethod();
 
+            //reset random components
             displayAllRandomShapes();
             //alert("Score: " + TOTAL_SCORE);
         }
@@ -85,8 +85,8 @@ function fieldLoaded(args) {
         if(pick == 2){
             console.log("POINT");
             TOTAL_SCORE++;
-            //myMethod();
-
+            
+            //reset random components
             displayAllRandomShapes();
             //alert("Score: " + TOTAL_SCORE);
         }
@@ -100,28 +100,22 @@ function fieldLoaded(args) {
             console.log("POINT");
             TOTAL_SCORE++;
     
-            displayAllRandomShapes();
             //reset random components
-            //myMethod();
+            displayAllRandomShapes();
             //alert("Score: " + TOTAL_SCORE);
         }
     }
 
     // Button listeners...basically listen on the page for the button
     // tap. When the button is tapped it will call the methods below
+    // this is where the callbacks are used!!
     circleBtn.addEventListener(buttonModule.Button.tapEvent, circleTap, this);
     squareBtn.addEventListener(buttonModule.Button.tapEvent, squareTap, this);
     triangleBtn.addEventListener(buttonModule.Button.tapEvent, triangleTap, this);
 
     // Load all the shapes randomly at start!
     displayAllRandomShapes();
-   //interval = setInterval(myMethod, 1000);
-   
-   
-   
-//var pickRed = page.getViewById("circle");
-//var pickGreen = page.getViewById("square"); 
-//var pickYellow = page.getViewById("triangle");
+    //interval = setInterval(myMethod, 1000); // old garbage!
 
     // Set all visuals here, like innerHtml stuff
     function displayAllRandomShapes() {
@@ -135,11 +129,6 @@ function fieldLoaded(args) {
         } else if(pick == 3){
             page.getViewById("whatToPick").backgroundColor = "yellow";
         }
-
-
-        //console.log(args.object.getMeasuredWidth());
-        //console.log(args.object.getMeasuredHeight());
-
         // random x/y coordinate
         circleBtn.top = Math.floor(Math.random() * 500);
         circleBtn.left = Math.floor(Math.random() * 300);
