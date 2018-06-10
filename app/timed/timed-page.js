@@ -1,5 +1,7 @@
 const TimedViewModel = require("./timed-view-model");
-var buttonModule = require("ui/button");
+const buttonModule = require("ui/button");
+const dialogs = require("ui/dialogs");
+const frames = require("ui/frame");
 
 
 /* ***********************************************************
@@ -18,7 +20,6 @@ function navigateToHome(args) {
     https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
     */
     const page = args.object;
-    var frames = require("ui/frame");
     frames.topmost().navigate("home/home-page");
     /*
     A page’s bindingContext is an object that should be used to perform
@@ -159,10 +160,31 @@ function fieldLoaded(args) {
         if(TOTAL_TIME_REMAINING == 0){ 
             clearInterval(a);
             GAME_OVER = true;
+            //alert('Game over son!!!');
+
+            // Delay the dialog opening for a second for usuability
+            setTimeout(() => {
+                dialogs.action({
+                    message: "Your final score was:  " + TOTAL_SCORE,
+                    cancelButtonText: "Close",
+                    cancelable: false, // [Android only] Gets or sets if the dialog can be canceled by taping outside of the dialog.
+                    actions: ["Play Again", "Return Home"]
+                }).then(function (result) {
+                    //console.log("Dialog result: " + result);
+                    TOTAL_SCORE = 0;
+                    TOTAL_TIME_REMAINING = 30;
+                    if(result == "Play Again"){
+                        frames.topmost().navigate("timed/timed-page");
+                    } else if(result == "Return Home"){
+                        frames.topmost().navigate("home/home-page");
+                    }
+                });
+            }, 1000);
         } 
             console.log(TOTAL_TIME_REMAINING);
             timerLabel.text = "Timer: " + TOTAL_TIME_REMAINING;
     }, 1000);
+
 }
 
 exports.pauseGame = pauseGame;
