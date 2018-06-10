@@ -166,7 +166,6 @@ function fieldLoaded(args) {
             setTimeout(() => {
                 dialogs.action({
                     message: "Your final score was:  " + TOTAL_SCORE,
-                    cancelButtonText: "Close",
                     cancelable: false, // [Android only] Gets or sets if the dialog can be canceled by taping outside of the dialog.
                     actions: ["Play Again", "Return Home"]
                 }).then(function (result) {
