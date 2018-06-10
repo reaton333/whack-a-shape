@@ -165,6 +165,7 @@ function fieldLoaded(args) {
             dialogs.action({
                 message: "Your final score was:  " + TOTAL_SCORE,
                 cancelButtonText: "Close",
+                cancelable: false,
                 actions: ["Play Again", "Return Home"]
             }).then(function (result) {
                 //console.log("Dialog result: " + result);
