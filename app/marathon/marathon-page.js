@@ -5,6 +5,7 @@ var pick;
 var userChoice = true;
 var score = 0;
 var page2;
+var firstPlay = true;
 
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
@@ -19,6 +20,8 @@ function onNavigatingTo(args) {
         clearInterval(interval);
         console.log("interval cleareddd");
         userChoice = true;
+        score = 0;
+        firstPlay = true;
     }
 }
 
@@ -31,15 +34,20 @@ function circleClick(args) {
     //args.object.left = 200;
     
     if(pick == 1){
-        score = score + 1;
-        console.log("POINT");
-        page2.getViewById("currentScore").text = "Score: " + score;
-        userChoice = true;
+        if((userChoice == false) || firstPlay){
+            firstPlay = false;
+            score = score + 1;
+            console.log("POINT");
+            page2.getViewById("currentScore").text = "Score: " + score;
+            userChoice = true;
+        }
+        
     }
     else{
         clearInterval(interval);
         alert("LOST");
         score = 0;
+        firstPlay = true;
     }
 }
 
@@ -48,14 +56,19 @@ function squareClick(args) {
     page.bindingContext = new MarathonViewModel();
     console.log("square");
     if(pick == 2){
-        score = score + 1;
-        page2.getViewById("currentScore").text = "Score: " + score;
-        console.log("POINT");
-        userChoice = true;
+        if((userChoice == false) || firstPlay){
+            firstPlay = false;
+            score = score + 1;
+            console.log("POINT");
+            page2.getViewById("currentScore").text = "Score: " + score;
+            userChoice = true;
+        }
+        
     } else {
         clearInterval(interval);
         alert("LOST");
         score = 0;
+        firstPlay = true;
     }
     
 }
@@ -65,14 +78,19 @@ function triangleClick(args) {
     page.bindingContext = new MarathonViewModel();
     console.log("triangle");
     if(pick == 3){
-        score = score +1;
-        page2.getViewById("currentScore").text = "Score: " + score;
-        console.log("POINT");
-        userChoice = true;
+        if((userChoice == false) || firstPlay){
+            firstPlay = false;
+            score = score + 1;
+            console.log("POINT");
+            page2.getViewById("currentScore").text = "Score: " + score;
+            userChoice = true;
+        }
+        
     } else {
         clearInterval(interval);
         alert("LOST");
         score = 0;
+        firstPlay = true;
     }
     
 }
@@ -109,8 +127,8 @@ function fieldLoaded(args) {
     triangle.visibility = "visible"; */
 
     /////////////////////////////////////////////////////////////////////////
-   interval = setInterval(myMethod, 1000);
-   //interval = setInterval(myMethod, 2500);
+   //interval = setInterval(myMethod, 1000);
+   interval = setInterval(myMethod, 1250);
 
 function myMethod()
 {
@@ -137,21 +155,21 @@ function myMethod()
     //console.log(args.object.getMeasuredHeight());
 
     console.log("");
-    circle.top = Math.floor(Math.random() * (height - 85));
+    circle.top = Math.floor(Math.random() * (height - 95));
     var cirleTOPend = circle.top + 80;
-    circle.left = Math.floor(Math.random() * (width - 85));
+    circle.left = Math.floor(Math.random() * (width - 95));
     var cirleLEFTend = circle.left + 80;
     
     
     console.log("");
     var greenCheck = true;
-    square.top = Math.floor(Math.random() * (height - 85));
+    square.top = Math.floor(Math.random() * (height - 95));
     var squareTOPend = square.top + 80;
-    square.left = Math.floor(Math.random() * (width - 85));
+    square.left = Math.floor(Math.random() * (width - 95));
     var squareLEFTend = square.left + 80;
     if(((circle.left <= square.left) && (square.left <=cirleLEFTend)) || ((circle.left <= squareLEFTend) && (squareLEFTend <=cirleLEFTend))){
         while(greenCheck){
-            square.top = Math.floor(Math.random() * (height - 85));
+            square.top = Math.floor(Math.random() * (height - 95));
             squareTOPend = square.top + 80;
             if(((circle.top <= square.top) && (square.top <=cirleTOPend)) || ((circle.top <= squareTOPend) && (squareTOPend <=cirleTOPend))){
                 greenCheck = true;
@@ -162,20 +180,20 @@ function myMethod()
         }
     }
     else{
-        square.top = Math.floor(Math.random() * (height - 85));
+        square.top = Math.floor(Math.random() * (height - 95));
         squareTOPend = square.top + 80;
     }
     
 
     console.log("");
     var yellowCheck = true;
-    triangle.top = Math.floor(Math.random() * (height - 85));
+    triangle.top = Math.floor(Math.random() * (height - 95));
     var triangleTOPend = triangle.top + 80;
-    triangle.left = Math.floor(Math.random() * (width - 85));
+    triangle.left = Math.floor(Math.random() * (width - 95));
     var triangleLEFTend = triangle.left + 80;
     if(((circle.left <= triangle.left) && (triangle.left <=cirleLEFTend)) || ((circle.left <= triangleLEFTend) && (triangleLEFTend <=cirleLEFTend))){
         while(yellowCheck){
-            triangle.top = Math.floor(Math.random() * (height - 85));
+            triangle.top = Math.floor(Math.random() * (height - 95));
             triangleTOPend = triangle.top + 80;
             if(((circle.top <= triangle.top) && (triangle.top <=cirleTOPend)) || ((circle.top <= triangleTOPend) && (triangleTOPend <=cirleTOPend))){
                 yellowCheck = true;
@@ -192,7 +210,7 @@ function myMethod()
     }
     else if(((square.left <= triangle.left) && (triangle.left <=squareLEFTend)) || ((square.left <= triangleLEFTend) && (triangleLEFTend <=squareLEFTend))){
         while(yellowCheck){
-            triangle.top = Math.floor(Math.random() * (height - 85));
+            triangle.top = Math.floor(Math.random() * (height - 95));
             triangleTOPend = triangle.top + 80;
             if(((circle.top <= triangle.top) && (triangle.top <=cirleTOPend)) || ((circle.top <= triangleTOPend) && (triangleTOPend <=cirleTOPend))){
                 yellowCheck = true;
@@ -208,7 +226,7 @@ function myMethod()
         }
     }
     else {
-        triangle.top = Math.floor(Math.random() * (height - 85));
+        triangle.top = Math.floor(Math.random() * (height - 95));
         triangleTOPend = triangle.top + 80;
     }
 
@@ -222,6 +240,7 @@ function myMethod()
         clearInterval(interval);
         alert("LOST");
         score = 0;
+        firstPlay = true;
     }
    
 

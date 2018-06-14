@@ -149,21 +149,21 @@ function fieldLoaded(args) {
         }
         // random x/y coordinate
         console.log("");
-        circleBtn.top = Math.floor(Math.random() * (height - 85));
+        circleBtn.top = Math.floor(Math.random() * (height - 95));
         var cirleTOPend = circleBtn.top + 80;
-        circleBtn.left = Math.floor(Math.random() * (width - 85));
+        circleBtn.left = Math.floor(Math.random() * (width - 95));
         var cirleLEFTend = circleBtn.left + 80;
         
         
         console.log("");
         var greenCheck = true;
-        squareBtn.top = Math.floor(Math.random() * (height - 85));
+        squareBtn.top = Math.floor(Math.random() * (height - 95));
         var squareTOPend = squareBtn.top + 80;
-        squareBtn.left = Math.floor(Math.random() * (width - 85));
+        squareBtn.left = Math.floor(Math.random() * (width - 95));
         var squareLEFTend = squareBtn.left + 80;
         if(((circleBtn.left <= squareBtn.left) && (squareBtn.left <=cirleLEFTend)) || ((circleBtn.left <= squareLEFTend) && (squareLEFTend <=cirleLEFTend))){
             while(greenCheck){
-                squareBtn.top = Math.floor(Math.random() * (height - 85));
+                squareBtn.top = Math.floor(Math.random() * (height - 95));
                 squareTOPend = squareBtn.top + 80;
                 if(((circleBtn.top <= squareBtn.top) && (squareBtn.top <=cirleTOPend)) || ((circleBtn.top <= squareTOPend) && (squareTOPend <=cirleTOPend))){
                     greenCheck = true;
@@ -174,19 +174,19 @@ function fieldLoaded(args) {
             }
         }
         else {
-            squareBtn.top = Math.floor(Math.random() * (height - 85));
+            squareBtn.top = Math.floor(Math.random() * (height - 95));
             squareTOPend = squareBtn.top + 80;
         }
     
         console.log("");
         var yellowCheck = true;
-        triangleBtn.top = Math.floor(Math.random() * (height - 85));
+        triangleBtn.top = Math.floor(Math.random() * (height - 95));
         var triangleTOPend = triangleBtn.top + 80;
-        triangleBtn.left = Math.floor(Math.random() * (width - 85));
+        triangleBtn.left = Math.floor(Math.random() * (width - 95));
         var triangleLEFTend = triangleBtn.left + 80;
         if(((circleBtn.left <= triangleBtn.left) && (triangleBtn.left <=cirleLEFTend)) || ((circleBtn.left <= triangleLEFTend) && (triangleLEFTend <=cirleLEFTend))){
             while(yellowCheck){
-                triangleBtn.top = Math.floor(Math.random() * (height - 85));
+                triangleBtn.top = Math.floor(Math.random() * (height - 95));
                 triangleTOPend = triangleBtn.top + 80;
                 if(((circleBtn.top <= triangleBtn.top) && (triangleBtn.top <=cirleTOPend)) || ((circleBtn.top <= triangleTOPend) && (triangleTOPend <=cirleTOPend))){
                     yellowCheck = true;
@@ -203,7 +203,7 @@ function fieldLoaded(args) {
         }
         else if(((squareBtn.left <= triangleBtn.left) && (triangleBtn.left <=squareLEFTend)) || ((squareBtn.left <= triangleLEFTend) && (triangleLEFTend <=squareLEFTend))){
             while(yellowCheck){
-                triangleBtn.top = Math.floor(Math.random() * (height - 85));
+                triangleBtn.top = Math.floor(Math.random() * (height - 95));
                 triangleTOPend = triangleBtn.top + 80;
                 if(((circleBtn.top <= triangleBtn.top) && (triangleBtn.top <=cirleTOPend)) || ((circleBtn.top <= triangleTOPend) && (triangleTOPend <=cirleTOPend))){
                     yellowCheck = true;
@@ -219,7 +219,7 @@ function fieldLoaded(args) {
             }
         }
         else{
-            triangleBtn.top = Math.floor(Math.random() * (height - 85));
+            triangleBtn.top = Math.floor(Math.random() * (height - 95));
             triangleTOPend = triangleBtn.top + 80;
         }
     
