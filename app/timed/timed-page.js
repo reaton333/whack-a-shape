@@ -2,7 +2,7 @@ const TimedViewModel = require("./timed-view-model");
 const buttonModule = require("ui/button");
 const dialogs = require("ui/dialogs");
 const frames = require("ui/frame");
-
+var page2;
 
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
@@ -52,6 +52,12 @@ function pauseGame(args) {
     alert("Game has been paused!");
 }
 
+
+function fieldLoaded2(args) {
+    page2 = args.object;
+    page2.bindingContext = new TimedViewModel();
+    console.log("loadedField2");
+}
 
 function fieldLoaded(args) {
     const page = args.object;
@@ -120,6 +126,17 @@ function fieldLoaded(args) {
 
     // Set all visuals here, like innerHtml stuff
     function displayAllRandomShapes() {
+        
+        var width = page2.getActualSize().width;
+        var height = page2.getActualSize().height;
+        if(width == 0){
+            width = 300;
+        }
+        if(height == 0){
+            height = 500;
+        }
+        console.log(height);
+        console.log(width);
         pick = Math.floor(Math.random() * 3) + 1;
         //console.log(pick);
         //page.getViewById("whatToPick").text = pick;
@@ -131,14 +148,53 @@ function fieldLoaded(args) {
             page.getViewById("whatToPick").backgroundColor = "yellow";
         }
         // random x/y coordinate
-        circleBtn.top = Math.floor(Math.random() * 500);
-        circleBtn.left = Math.floor(Math.random() * 300);
-
-        squareBtn.top = Math.floor(Math.random() * 500);
-        squareBtn.left = Math.floor(Math.random() * 300);
-
-        triangleBtn.top = Math.floor(Math.random() * 500);
-        triangleBtn.left = Math.floor(Math.random() * 300);
+        console.log("");
+        circleBtn.top = Math.floor(Math.random() * (height - 150));
+        var cirleTOPend = circleBtn.top + 100;
+        circleBtn.left = Math.floor(Math.random() * (width - 150));
+        var cirleLEFTend = circleBtn.left + 100;
+        
+        
+        console.log("");
+        var greenCheck = true;
+        squareBtn.top = Math.floor(Math.random() * (height - 150));
+        var squareTOPend = squareBtn.top + 100;
+        squareBtn.left = Math.floor(Math.random() * (width - 150));
+        var squareLEFTend = squareBtn.left + 100;
+        while(greenCheck){
+            squareBtn.top = Math.floor(Math.random() * (height - 150));
+            squareTOPend = squareBtn.top + 100;
+            if(((circleBtn.top <= squareBtn.top) && (squareBtn.top <=cirleTOPend)) || ((circleBtn.top <= squareTOPend) && (squareTOPend <=cirleTOPend))){
+                greenCheck = true;
+                console.log("RG OVERLAP");
+            }else {
+                greenCheck = false;
+            }
+        }
+    
+        console.log("");
+        var yellowCheck = true;
+        triangleBtn.top = Math.floor(Math.random() * (height - 150));
+        var triangleTOPend = triangleBtn.top + 100;
+        triangleBtn.left = Math.floor(Math.random() * (width - 150));
+        var triangleLEFTend = triangleBtn.left + 100;
+        while(yellowCheck){
+            triangleBtn.top = Math.floor(Math.random() * (height - 150));
+            triangleTOPend = triangleBtn.top + 100;
+            if(((circleBtn.top <= triangleBtn.top) && (triangleBtn.top <=cirleTOPend)) || ((circleBtn.top <= triangleTOPend) && (triangleTOPend <=cirleTOPend))){
+                yellowCheck = true;
+                console.log("RY OVERLAP");
+            }
+            else if(((squareBtn.top <= triangleBtn.top) && (triangleBtn.top <=squareTOPend)) || ((squareBtn.top <= triangleTOPend) && (triangleTOPend <=squareTOPend))){
+                yellowCheck = true;
+                console.log("GY OVERLAP");
+            }   
+            else {
+                yellowCheck = false;
+            }
+        }
+    
+        console.log("");
 
         circleBtn.visibility = "visible";
         squareBtn.visibility = "visible";
@@ -193,3 +249,4 @@ exports.navigateToHome = navigateToHome;
 //exports.squareClick = squareClick;
 //exports.triangleClick = triangleClick;
 exports.fieldLoaded = fieldLoaded;
+exports.fieldLoaded2 = fieldLoaded2;
