@@ -120,21 +120,21 @@ function myMethod()
     //console.log(args.object.getMeasuredHeight());
 
     console.log("");
-    circle.top = Math.floor(Math.random() * (height - 150));
-    var cirleTOPend = circle.top + 100;
-    circle.left = Math.floor(Math.random() * (width - 150));
-    var cirleLEFTend = circle.left + 100;
+    circle.top = Math.floor(Math.random() * (height - 85));
+    var cirleTOPend = circle.top + 80;
+    circle.left = Math.floor(Math.random() * (width - 85));
+    var cirleLEFTend = circle.left + 80;
     
     
     console.log("");
     var greenCheck = true;
-    square.top = Math.floor(Math.random() * (height - 150));
-    var squareTOPend = square.top + 100;
-    square.left = Math.floor(Math.random() * (width - 150));
-    var squareLEFTend = square.left + 100;
+    square.top = Math.floor(Math.random() * (height - 85));
+    var squareTOPend = square.top + 80;
+    square.left = Math.floor(Math.random() * (width - 85));
+    var squareLEFTend = square.left + 80;
     while(greenCheck){
-        square.top = Math.floor(Math.random() * (height - 150));
-        squareTOPend = square.top + 100;
+        square.top = Math.floor(Math.random() * (height - 85));
+        squareTOPend = square.top + 80;
         if(((circle.top <= square.top) && (square.top <=cirleTOPend)) || ((circle.top <= squareTOPend) && (squareTOPend <=cirleTOPend))){
             greenCheck = true;
             console.log("RG OVERLAP");
@@ -145,13 +145,13 @@ function myMethod()
 
     console.log("");
     var yellowCheck = true;
-    triangle.top = Math.floor(Math.random() * (height - 150));
-    var triangleTOPend = triangle.top + 100;
-    triangle.left = Math.floor(Math.random() * (width - 150));
-    var triangleLEFTend = triangle.left + 100;
+    triangle.top = Math.floor(Math.random() * (height - 85));
+    var triangleTOPend = triangle.top + 80;
+    triangle.left = Math.floor(Math.random() * (width - 85));
+    var triangleLEFTend = triangle.left + 80;
     while(yellowCheck){
-        triangle.top = Math.floor(Math.random() * (height - 150));
-        triangleTOPend = triangle.top + 100;
+        triangle.top = Math.floor(Math.random() * (height - 85));
+        triangleTOPend = triangle.top + 80;
         if(((circle.top <= triangle.top) && (triangle.top <=cirleTOPend)) || ((circle.top <= triangleTOPend) && (triangleTOPend <=cirleTOPend))){
             yellowCheck = true;
             console.log("RY OVERLAP");
@@ -169,7 +169,7 @@ function myMethod()
     circle.visibility = "visible";
     square.visibility = "visible";
     triangle.visibility = "visible";
-    //userChoice = false;
+    userChoice = false;
     }
     else{
         clearInterval(interval);

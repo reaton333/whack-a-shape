@@ -149,21 +149,21 @@ function fieldLoaded(args) {
         }
         // random x/y coordinate
         console.log("");
-        circleBtn.top = Math.floor(Math.random() * (height - 150));
-        var cirleTOPend = circleBtn.top + 100;
-        circleBtn.left = Math.floor(Math.random() * (width - 150));
-        var cirleLEFTend = circleBtn.left + 100;
+        circleBtn.top = Math.floor(Math.random() * (height - 85));
+        var cirleTOPend = circleBtn.top + 80;
+        circleBtn.left = Math.floor(Math.random() * (width - 85));
+        var cirleLEFTend = circleBtn.left + 80;
         
         
         console.log("");
         var greenCheck = true;
-        squareBtn.top = Math.floor(Math.random() * (height - 150));
-        var squareTOPend = squareBtn.top + 100;
-        squareBtn.left = Math.floor(Math.random() * (width - 150));
-        var squareLEFTend = squareBtn.left + 100;
+        squareBtn.top = Math.floor(Math.random() * (height - 85));
+        var squareTOPend = squareBtn.top + 80;
+        squareBtn.left = Math.floor(Math.random() * (width - 85));
+        var squareLEFTend = squareBtn.left + 80;
         while(greenCheck){
-            squareBtn.top = Math.floor(Math.random() * (height - 150));
-            squareTOPend = squareBtn.top + 100;
+            squareBtn.top = Math.floor(Math.random() * (height - 85));
+            squareTOPend = squareBtn.top + 80;
             if(((circleBtn.top <= squareBtn.top) && (squareBtn.top <=cirleTOPend)) || ((circleBtn.top <= squareTOPend) && (squareTOPend <=cirleTOPend))){
                 greenCheck = true;
                 console.log("RG OVERLAP");
@@ -174,13 +174,13 @@ function fieldLoaded(args) {
     
         console.log("");
         var yellowCheck = true;
-        triangleBtn.top = Math.floor(Math.random() * (height - 150));
-        var triangleTOPend = triangleBtn.top + 100;
-        triangleBtn.left = Math.floor(Math.random() * (width - 150));
-        var triangleLEFTend = triangleBtn.left + 100;
+        triangleBtn.top = Math.floor(Math.random() * (height - 85));
+        var triangleTOPend = triangleBtn.top + 80;
+        triangleBtn.left = Math.floor(Math.random() * (width - 85));
+        var triangleLEFTend = triangleBtn.left + 80;
         while(yellowCheck){
-            triangleBtn.top = Math.floor(Math.random() * (height - 150));
-            triangleTOPend = triangleBtn.top + 100;
+            triangleBtn.top = Math.floor(Math.random() * (height - 85));
+            triangleTOPend = triangleBtn.top + 80;
             if(((circleBtn.top <= triangleBtn.top) && (triangleBtn.top <=cirleTOPend)) || ((circleBtn.top <= triangleTOPend) && (triangleTOPend <=cirleTOPend))){
                 yellowCheck = true;
                 console.log("RY OVERLAP");
