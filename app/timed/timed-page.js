@@ -161,15 +161,21 @@ function fieldLoaded(args) {
         var squareTOPend = squareBtn.top + 80;
         squareBtn.left = Math.floor(Math.random() * (width - 85));
         var squareLEFTend = squareBtn.left + 80;
-        while(greenCheck){
+        if(((circleBtn.left <= squareBtn.left) && (squareBtn.left <=cirleLEFTend)) || ((circleBtn.left <= squareLEFTend) && (squareLEFTend <=cirleLEFTend))){
+            while(greenCheck){
+                squareBtn.top = Math.floor(Math.random() * (height - 85));
+                squareTOPend = squareBtn.top + 80;
+                if(((circleBtn.top <= squareBtn.top) && (squareBtn.top <=cirleTOPend)) || ((circleBtn.top <= squareTOPend) && (squareTOPend <=cirleTOPend))){
+                    greenCheck = true;
+                    console.log("RG OVERLAP");
+                }else {
+                    greenCheck = false;
+                }
+            }
+        }
+        else {
             squareBtn.top = Math.floor(Math.random() * (height - 85));
             squareTOPend = squareBtn.top + 80;
-            if(((circleBtn.top <= squareBtn.top) && (squareBtn.top <=cirleTOPend)) || ((circleBtn.top <= squareTOPend) && (squareTOPend <=cirleTOPend))){
-                greenCheck = true;
-                console.log("RG OVERLAP");
-            }else {
-                greenCheck = false;
-            }
         }
     
         console.log("");
@@ -178,20 +184,43 @@ function fieldLoaded(args) {
         var triangleTOPend = triangleBtn.top + 80;
         triangleBtn.left = Math.floor(Math.random() * (width - 85));
         var triangleLEFTend = triangleBtn.left + 80;
-        while(yellowCheck){
+        if(((circleBtn.left <= triangleBtn.left) && (triangleBtn.left <=cirleLEFTend)) || ((circleBtn.left <= triangleLEFTend) && (triangleLEFTend <=cirleLEFTend))){
+            while(yellowCheck){
+                triangleBtn.top = Math.floor(Math.random() * (height - 85));
+                triangleTOPend = triangleBtn.top + 80;
+                if(((circleBtn.top <= triangleBtn.top) && (triangleBtn.top <=cirleTOPend)) || ((circleBtn.top <= triangleTOPend) && (triangleTOPend <=cirleTOPend))){
+                    yellowCheck = true;
+                    console.log("RY OVERLAP");
+                }
+                else if(((squareBtn.top <= triangleBtn.top) && (triangleBtn.top <=squareTOPend)) || ((squareBtn.top <= triangleTOPend) && (triangleTOPend <=squareTOPend))){
+                    yellowCheck = true;
+                    console.log("GY OVERLAP");
+                }   
+                else {
+                    yellowCheck = false;
+                }
+            }
+        }
+        else if(((squareBtn.left <= triangleBtn.left) && (triangleBtn.left <=squareLEFTend)) || ((squareBtn.left <= triangleLEFTend) && (triangleLEFTend <=squareLEFTend))){
+            while(yellowCheck){
+                triangleBtn.top = Math.floor(Math.random() * (height - 85));
+                triangleTOPend = triangleBtn.top + 80;
+                if(((circleBtn.top <= triangleBtn.top) && (triangleBtn.top <=cirleTOPend)) || ((circleBtn.top <= triangleTOPend) && (triangleTOPend <=cirleTOPend))){
+                    yellowCheck = true;
+                    console.log("RY OVERLAP");
+                }
+                else if(((squareBtn.top <= triangleBtn.top) && (triangleBtn.top <=squareTOPend)) || ((squareBtn.top <= triangleTOPend) && (triangleTOPend <=squareTOPend))){
+                    yellowCheck = true;
+                    console.log("GY OVERLAP");
+                }   
+                else {
+                    yellowCheck = false;
+                }
+            }
+        }
+        else{
             triangleBtn.top = Math.floor(Math.random() * (height - 85));
             triangleTOPend = triangleBtn.top + 80;
-            if(((circleBtn.top <= triangleBtn.top) && (triangleBtn.top <=cirleTOPend)) || ((circleBtn.top <= triangleTOPend) && (triangleTOPend <=cirleTOPend))){
-                yellowCheck = true;
-                console.log("RY OVERLAP");
-            }
-            else if(((squareBtn.top <= triangleBtn.top) && (triangleBtn.top <=squareTOPend)) || ((squareBtn.top <= triangleTOPend) && (triangleTOPend <=squareTOPend))){
-                yellowCheck = true;
-                console.log("GY OVERLAP");
-            }   
-            else {
-                yellowCheck = false;
-            }
         }
     
         console.log("");
