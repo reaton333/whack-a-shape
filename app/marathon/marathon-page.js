@@ -45,7 +45,7 @@ function circleClick(args) {
     }
     else{
         clearInterval(interval);
-        alert("LOST");
+        alert("SCORE: " + score);
         score = 0;
         firstPlay = true;
     }
@@ -66,7 +66,7 @@ function squareClick(args) {
         
     } else {
         clearInterval(interval);
-        alert("LOST");
+        alert("SCORE: " + score);
         score = 0;
         firstPlay = true;
     }
@@ -88,7 +88,7 @@ function triangleClick(args) {
         
     } else {
         clearInterval(interval);
-        alert("LOST");
+        alert("SCORE: " + score);
         score = 0;
         firstPlay = true;
     }
@@ -127,8 +127,8 @@ function fieldLoaded(args) {
     triangle.visibility = "visible"; */
 
     /////////////////////////////////////////////////////////////////////////
-   //interval = setInterval(myMethod, 1000);
-   interval = setInterval(myMethod, 1250);
+   interval = setInterval(myMethod, 1000);
+   //interval = setInterval(myMethod, 1250);
 
 function myMethod()
 {
@@ -238,7 +238,7 @@ function myMethod()
     }
     else{
         clearInterval(interval);
-        alert("LOST");
+        alert("SCORE: " + score);
         score = 0;
         firstPlay = true;
     }
