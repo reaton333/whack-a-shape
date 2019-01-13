@@ -2,6 +2,7 @@ const TimedViewModel = require("./timed-view-model");
 const buttonModule = require("ui/button");
 const dialogs = require("ui/dialogs");
 const frames = require("ui/frame");
+require("nativescript-dom");
 var page2;
 
 var a;
@@ -282,6 +283,16 @@ function fieldLoaded(args) {
                 });
             }, 1000);
         } 
+            console.log(getElementById("Timed"))
+            if(!getElementById("Timed")){
+                clearInterval(a);
+                a = null;
+                console.log("cleared on navigating back");
+                TOTAL_SCORE = 0;
+                TOTAL_GAME_PLAY_TIME_SECONDS = 30;
+                TOTAL_TIME_REMAINING = 30;
+                GAME_OVER = false;
+            }
             console.log(TOTAL_TIME_REMAINING);
             timerLabel.text = "Timer: " + TOTAL_TIME_REMAINING;
     }, 1000);

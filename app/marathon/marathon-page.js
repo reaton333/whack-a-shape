@@ -1,4 +1,5 @@
 const MarathonViewModel = require("./marathon-view-model");
+require("nativescript-dom");
 var interval;
 var gameScreen;
 var pick;
@@ -271,13 +272,24 @@ function myMethod()
     square.visibility = "visible";
     triangle.visibility = "visible";
     userChoice = false;
+
+    
+
     }
     else{
-        clearInterval(interval);
-        alert("SCORE: " + score);
-        interval = null;
-        score = 0;
-        firstPlay = true;
+        if(!getElementById("Streak")){
+            clearInterval(interval);
+            interval = null;
+            score = 0;
+            firstPlay = true;
+        }
+        else{
+            alert("SCORE: " + score);
+            clearInterval(interval);
+            interval = null;
+            score = 0;
+            firstPlay = true;
+        }
     }
    
 
