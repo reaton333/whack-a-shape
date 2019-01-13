@@ -38,7 +38,7 @@ function circleClick(args) {
     //args.object.left = 200;
     
     if(pick == 1){
-        if((userChoice == false) || firstPlay){
+        if(((userChoice == false) || firstPlay) & interval != null){
             firstPlay = false;
             score = score + 1;
             console.log("POINT");
@@ -48,10 +48,15 @@ function circleClick(args) {
         }
         
     }
+    else if(interval == null){
+        score = 0;
+        firstPlay = true;
+    }
     else{
         circle.backgroundColor = "pink";
         clearInterval(interval);
         alert("SCORE: " + score);
+        interval = null;
         score = 0;
         firstPlay = true;
     }
@@ -64,7 +69,7 @@ function squareClick(args) {
     page.bindingContext = new MarathonViewModel();
     console.log("square");
     if(pick == 2){
-        if((userChoice == false) || firstPlay){
+        if(((userChoice == false) || firstPlay) & interval != null){
             firstPlay = false;
             score = score + 1;
             console.log("POINT");
@@ -73,10 +78,16 @@ function squareClick(args) {
             square.backgroundColor = "black";
         }
         
-    } else {
+    } 
+    else if(interval == null){
+        score = 0;
+        firstPlay = true;
+    }
+    else {
         square.backgroundColor = "pink";
         clearInterval(interval);
         alert("SCORE: " + score);
+        interval = null;
         score = 0;
         firstPlay = true;
     }
@@ -90,7 +101,7 @@ function triangleClick(args) {
     page.bindingContext = new MarathonViewModel();
     console.log("triangle");
     if(pick == 3){
-        if((userChoice == false) || firstPlay){
+        if(((userChoice == false) || firstPlay) & interval != null){
             firstPlay = false;
             score = score + 1;
             console.log("POINT");
@@ -99,9 +110,15 @@ function triangleClick(args) {
             triangle.backgroundColor = "black";
         }
         
-    } else {
+    } 
+    else if(interval == null){
+        score = 0;
+        firstPlay = true;
+    }
+    else {
         clearInterval(interval);
         alert("SCORE: " + score);
+        interval = null;
         score = 0;
         firstPlay = true;
         triangle.backgroundColor = "pink";
@@ -258,6 +275,7 @@ function myMethod()
     else{
         clearInterval(interval);
         alert("SCORE: " + score);
+        interval = null;
         score = 0;
         firstPlay = true;
     }
