@@ -4,6 +4,16 @@ const dialogs = require("ui/dialogs");
 const frames = require("ui/frame");
 var page2;
 
+var a;
+var TOTAL_SCORE = 0;
+var TOTAL_GAME_PLAY_TIME_SECONDS = 30;
+var interval;
+var gameScreen;
+var pick;
+var TOTAL_TIME_REMAINING = 30; //For now set to 30 secs!
+var GAME_OVER = false; // to be used later for stopping the game!
+// var scoreLabel;
+
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -11,6 +21,14 @@ function onNavigatingTo(args) {
     const page = args.object;
     page.bindingContext = new TimedViewModel();
     console.log("TIMED");
+    if(a){
+        clearInterval(a);
+        console.log("interval cleareddd");
+        TOTAL_SCORE = 0;
+        TOTAL_GAME_PLAY_TIME_SECONDS = 30;
+        TOTAL_TIME_REMAINING = 30;
+        GAME_OVER = false;
+    }
 }
 
 function navigateToHome(args) {
@@ -19,6 +37,14 @@ function navigateToHome(args) {
     view the API reference of the Page to see what’s available at
     https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
     */
+   if(a){
+    clearInterval(a);
+    console.log("cleared on navigating back");
+    TOTAL_SCORE = 0;
+    TOTAL_GAME_PLAY_TIME_SECONDS = 30;
+    TOTAL_TIME_REMAINING = 30;
+    GAME_OVER = false;
+}
     const page = args.object;
     frames.topmost().navigate("home/home-page");
     /*
@@ -35,15 +61,6 @@ function navigateToHome(args) {
     console.log("Timed Page to Home Page");
     //window.alert("test");
 }
-
-var TOTAL_SCORE = 0;
-var TOTAL_GAME_PLAY_TIME_SECONDS = 30;
-var interval;
-var gameScreen;
-var pick;
-var TOTAL_TIME_REMAINING = 30; //For now set to 30 secs!
-var GAME_OVER = false; // to be used later for stopping the game!
-// var scoreLabel;
 
 
 function pauseGame(args) {

@@ -6,6 +6,9 @@ var userChoice = true;
 var score = 0;
 var page2;
 var firstPlay = true;
+var circle;
+var square;
+var triangle;
 
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
@@ -26,6 +29,7 @@ function onNavigatingTo(args) {
 }
 
 function circleClick(args) {
+
     const page = args.object;
     page.bindingContext = new MarathonViewModel();
     console.log("circle");
@@ -40,10 +44,12 @@ function circleClick(args) {
             console.log("POINT");
             page2.getViewById("currentScore").text = "Score: " + score;
             userChoice = true;
+            circle.backgroundColor = "black";
         }
         
     }
     else{
+        circle.backgroundColor = "pink";
         clearInterval(interval);
         alert("SCORE: " + score);
         score = 0;
@@ -52,6 +58,8 @@ function circleClick(args) {
 }
 
 function squareClick(args) {
+
+
     const page = args.object;
     page.bindingContext = new MarathonViewModel();
     console.log("square");
@@ -62,9 +70,11 @@ function squareClick(args) {
             console.log("POINT");
             page2.getViewById("currentScore").text = "Score: " + score;
             userChoice = true;
+            square.backgroundColor = "black";
         }
         
     } else {
+        square.backgroundColor = "pink";
         clearInterval(interval);
         alert("SCORE: " + score);
         score = 0;
@@ -74,6 +84,8 @@ function squareClick(args) {
 }
 
 function triangleClick(args) {
+ 
+
     const page = args.object;
     page.bindingContext = new MarathonViewModel();
     console.log("triangle");
@@ -84,6 +96,7 @@ function triangleClick(args) {
             console.log("POINT");
             page2.getViewById("currentScore").text = "Score: " + score;
             userChoice = true;
+            triangle.backgroundColor = "black";
         }
         
     } else {
@@ -91,6 +104,7 @@ function triangleClick(args) {
         alert("SCORE: " + score);
         score = 0;
         firstPlay = true;
+        triangle.backgroundColor = "pink";
     }
     
 }
@@ -147,9 +161,9 @@ function myMethod()
     } else if(pick == 3){
         page2.getViewById("whatToPick").backgroundColor = "yellow";
     }
-    var circle = page.getViewById("circle");
-    var square = page.getViewById("square"); 
-    var triangle = page.getViewById("triangle");
+    circle = page.getViewById("circle");
+    square = page.getViewById("square"); 
+    triangle = page.getViewById("triangle");
 
     //console.log(args.object.getMeasuredWidth());
     //console.log(args.object.getMeasuredHeight());
@@ -231,6 +245,11 @@ function myMethod()
     }
 
     console.log("");
+
+    circle.backgroundColor = "red";
+    square.backgroundColor = "green";
+    triangle.backgroundColor = "yellow"; 
+
     circle.visibility = "visible";
     square.visibility = "visible";
     triangle.visibility = "visible";
