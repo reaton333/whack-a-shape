@@ -1,5 +1,6 @@
 const MarathonViewModel = require("./marathon-view-model");
 var application = require("application");
+const frames = require("ui/frame");
 require("nativescript-dom");
 var cancel = false;
 var interval;
@@ -8,6 +9,7 @@ var pick;
 var userChoice = true;
 var score = 0;
 var page2;
+var pageBack;
 var firstPlay = true;
 var circle;
 var square;
@@ -18,6 +20,7 @@ var triangle;
 *************************************************************/
 function onNavigatingTo(args) {
     const page = args.object;
+    pageBack = page;
     page.bindingContext = new MarathonViewModel();
     console.log("MARATHONnnnnnnnnnnnnnnnnnn nav to");
     //view.getActualSize().width
@@ -196,6 +199,19 @@ function fieldLoaded(args) {
     }
     else{
         cancel = false;
+        frames.topmost().navigate("home/home-page");
+    /*
+    A page’s bindingContext is an object that should be used to perform
+    data binding between XML markup and JavaScript code. Properties
+    on the bindingContext can be accessed using the {{ }} syntax in XML.
+    In this example, the {{ message }} and {{ onTap }} bindings are resolved
+    against the object returned by createViewModel().
+
+    You can learn more about data binding in NativeScript at
+    https://docs.nativescript.org/core-concepts/data-binding.
+    */
+    pageBack.bindingContext = MarathonViewModel;
+    console.log("streak Page to Home Page");
     }
    
 
@@ -325,7 +341,20 @@ function myMethod()
                 alert("SCORE: " + score);
             }
             else{
-                cancel = true;
+                cancel = false;
+                frames.topmost().navigate("home/home-page");
+    /*
+    A page’s bindingContext is an object that should be used to perform
+    data binding between XML markup and JavaScript code. Properties
+    on the bindingContext can be accessed using the {{ }} syntax in XML.
+    In this example, the {{ message }} and {{ onTap }} bindings are resolved
+    against the object returned by createViewModel().
+
+    You can learn more about data binding in NativeScript at
+    https://docs.nativescript.org/core-concepts/data-binding.
+    */
+    pageBack.bindingContext = MarathonViewModel;
+    console.log("streak Page to Home Page");
             }
             clearInterval(interval);
             interval = null;
