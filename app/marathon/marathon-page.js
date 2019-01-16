@@ -1,5 +1,7 @@
 const MarathonViewModel = require("./marathon-view-model");
+var application = require("application");
 require("nativescript-dom");
+var cancel = false;
 var interval;
 var gameScreen;
 var pick;
@@ -28,6 +30,35 @@ function onNavigatingTo(args) {
         firstPlay = true;
     }
 }
+
+// App went to background...
+application.on(application.suspendEvent, function (args) {
+    if (args.android) {
+        // For Android applications, args.android is an android activity class.
+        console.log("Activity background: " + args.android);
+
+        cancel = true;
+        clearInterval(interval);
+        interval = null;
+        score = 0;
+        firstPlay = true;
+
+    } else if (args.ios) {
+        // For iOS applications, args.ios is UIApplication.
+        console.log("UIApplication background: " + args.ios);
+    }
+});
+
+// App was reopened...
+application.on(application.resumeEvent, function (args) {
+    if (args.android) {
+        // For Android applications, args.android is an android activity class.
+        console.log("Activity resume: " + args.android);
+    } else if (args.ios) {
+        // For iOS applications, args.ios is UIApplication.
+        console.log("UIApplication resume: " + args.ios);
+    }
+});
 
 function circleClick(args) {
 
@@ -159,8 +190,14 @@ function fieldLoaded(args) {
     triangle.visibility = "visible"; */
 
     /////////////////////////////////////////////////////////////////////////
-   interval = setInterval(myMethod, 1000);
+    if(!cancel){
+        interval = setInterval(myMethod, 1000);
    //interval = setInterval(myMethod, 1250);
+    }
+    else{
+        cancel = false;
+    }
+   
 
 function myMethod()
 {
@@ -284,7 +321,12 @@ function myMethod()
             firstPlay = true;
         }
         else{
-            alert("SCORE: " + score);
+            if(!cancel){
+                alert("SCORE: " + score);
+            }
+            else{
+                cancel = true;
+            }
             clearInterval(interval);
             interval = null;
             score = 0;
