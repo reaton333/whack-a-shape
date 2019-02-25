@@ -6,17 +6,21 @@
   "nativescript": {
     "id": "org.nativescript.whackashape",
     "tns-android": {
-      "version": "3.4.2"
+      "version": "5.3.0-2019-02-22-164104-01"
+    },
+    "tns-ios": {
+      "version": "5.2.0"
     }
   },
   "dependencies": {
     "nativescript-dom": "^2.0.2",
+    "nativescript-explosionfield": "^1.1.1",
     "nativescript-theme-core": "~1.0.4",
-    "tns-core-modules": "~3.4.0"
+    "tns-core-modules": "^5.2.1"
   },
   "devDependencies": {
-    "babel-traverse": "6.4.5",
-    "babel-types": "6.4.5",
+    "babel-traverse": "^6.26.0",
+    "babel-types": "^6.26.0",
     "babylon": "6.4.5",
     "copy-webpack-plugin": "~4.3.0",
     "css-loader": "~0.28.7",
@@ -26,6 +30,7 @@
     "nativescript-worker-loader": "~0.8.1",
     "raw-loader": "~0.5.1",
     "resolve-url-loader": "~2.2.1",
+    "typescript": "^1.8.7",
     "uglifyjs-webpack-plugin": "~1.1.6",
     "webpack": "~3.10.0",
     "webpack-bundle-analyzer": "^2.9.1",

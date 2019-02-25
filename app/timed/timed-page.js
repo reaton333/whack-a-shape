@@ -2,6 +2,9 @@ const TimedViewModel = require("./timed-view-model");
 const buttonModule = require("ui/button");
 const dialogs = require("ui/dialogs");
 const frames = require("ui/frame");
+
+// Explosion UI Element
+var explosion = require("nativescript-explosionfield");
 require("nativescript-dom");
 var page2;
 
@@ -71,6 +74,17 @@ function pauseGame(args) {
 }
 
 
+function goBoom(args) {    
+    // call the *explode* method on the plugin passing in a view
+    // on tap events in Nativescript this will be args.object.
+
+    console.log('Enter goBoom!!');
+
+    console.log(args.object);
+
+    explosion.explode(args.object);
+}
+
 function fieldLoaded2(args) {
     page2 = args.object;
     page2.bindingContext = new TimedViewModel();
@@ -87,6 +101,7 @@ function fieldLoaded(args) {
     var squareBtn = page.getViewById("squareBtn"); 
     var triangleBtn = page.getViewById("triangleBtn");
     var scoreLabel = page.getViewById("currentScore");
+
 
     var circleTap = function circleClick(args) {
         const page = args.object;
@@ -107,6 +122,7 @@ function fieldLoaded(args) {
         const page = args.object;
         
         console.log("square");
+
         if(pick == 2){
             console.log("POINT");
             TOTAL_SCORE++;
@@ -121,6 +137,7 @@ function fieldLoaded(args) {
         const page = args.object;
     
         console.log("triangle");
+
         if(pick == 3){
             console.log("POINT");
             TOTAL_SCORE++;
@@ -299,6 +316,7 @@ function fieldLoaded(args) {
 
 }
 
+exports.goBoom = goBoom;
 exports.pauseGame = pauseGame;
 exports.onNavigatingTo = onNavigatingTo;
 exports.navigateToHome = navigateToHome;

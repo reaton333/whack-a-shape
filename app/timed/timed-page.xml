@@ -20,9 +20,9 @@
         
         <AbsoluteLayout row="1" orentation="vertical" height="91%" backgroundColor="#3d3d3d" id="gameField" loaded="fieldLoaded2">
 
-            <button id="circleBtn" width="80" height="80" backgroundColor="red" visibility="collapsed"/>
-            <button id="squareBtn" width="80" height="80" backgroundColor="green" visibility="collapsed"/>
-            <button id="triangleBtn" width="80" height="80" backgroundColor="yellow" visibility="collapsed"/>
+            <button id="circleBtn" tap="goBoom" width="80" height="80" backgroundColor="red" visibility="collapsed"/>
+            <button id="squareBtn" tap="goBoom" width="80" height="80" backgroundColor="green" visibility="collapsed"/>
+            <button id="triangleBtn" tap="goBoom" width="80" height="80" backgroundColor="yellow" visibility="collapsed"/>
         </AbsoluteLayout>
     </StackLayout>
 </Page>

@@ -15,12 +15,10 @@
     </GridLayout>
 
     <StackLayout orientation="vertical" >
-        <Button text="Streak Whack" class="btn btn-active btn-primary home-page-btns" tap="buttonTapMarathon"/>
-        <Button text="Timed Whack" class="btn btn-active btn-primary home-page-btns" tap="buttonTapTime"/>
+        <Button text="&#xf0e7; Streak Whack" class="btn btn-active btn-primary home-page-btns fas" tap="buttonTapMarathon"/>
+        <Button text="&#xf017; Timed Whack" class="btn btn-active btn-primary home-page-btns fas" tap="buttonTapTime"/>
     </StackLayout>
 
 </StackLayout>
-
-
 
 </Page>
